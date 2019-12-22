@@ -7,46 +7,21 @@
                     <i class="nav-icon fas fa-tachometer-alt">
 
                     </i>
-                    {{ trans('global.dashboard') }}
+                    PANEL
                 </a>
             </li>
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link  nav-dropdown-toggle">
+           
+            <li class="nav-item">
+                <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                     <i class="fas fa-users nav-icon">
 
                     </i>
-                    {{ trans('global.userManagement.title') }}
+                    USUARIOS
                 </a>
-                <ul class="nav-dropdown-items">
-                    <li class="nav-item">
-                        <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
-                            <i class="fas fa-unlock-alt nav-icon">
-
-                            </i>
-                            {{ trans('global.permission.title') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
-                            <i class="fas fa-briefcase nav-icon">
-
-                            </i>
-                            {{ trans('global.role.title') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
-                            <i class="fas fa-user nav-icon">
-
-                            </i>
-                            {{ trans('global.user.title') }}
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="nav-item">
                 <a href="{{ route("admin.marcas.index") }}" class="nav-link {{ request()->is('admin/marcas') || request()->is('admin/marcas/*') ? 'active' : '' }}">
-                    <i class="fas fa-cogs nav-icon">
+                    <i class="fas fa-tags nav-icon">
 
                     </i>
                     MARCAS
@@ -54,10 +29,42 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route("admin.camiones.index") }}" class="nav-link {{ request()->is('admin/camiones') || request()->is('admin/camiones/*') ? 'active' : '' }}">
-                    <i class="fas fa-cogs nav-icon">
+                    <i class="fas fa-truck nav-icon">
 
                     </i>
                     CAMIONES
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route("admin.conductores.index") }}" class="nav-link {{ request()->is('admin/conductores') || request()->is('admin/conductores/*') ? 'active' : '' }}">
+                    <i class="fas fa-id-card nav-icon">
+
+                    </i>
+                    CONDUCTORES
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route("admin.tarifas.index") }}" class="nav-link {{ request()->is('admin/tarifas') || request()->is('admin/tarifas/*') ? 'active' : '' }}">
+                    <i class="fas fa-usd nav-icon">
+
+                    </i>
+                    TARIFAS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route("admin.boletas.index") }}" class="nav-link {{ request()->is('admin/boletas') || request()->is('admin/boletas/*') ? 'active' : '' }}">
+                    <i class="fas fa-file-text nav-icon">
+
+                    </i>
+                    BOLETAS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route("admin.empresas.index") }}" class="nav-link {{ request()->is('admin/empresas') || request()->is('admin/empresas/*') ? 'active' : '' }}">
+                    <i class="fas fa-home nav-icon">
+
+                    </i>
+                    EMPRESAS
                 </a>
             </li>
             <li class="nav-item">
@@ -65,7 +72,7 @@
                     <i class="nav-icon fas fa-sign-out-alt">
 
                     </i>
-                    {{ trans('global.logout') }}
+                    SALIR
                 </a>
             </li>
         </ul>

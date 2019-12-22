@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('global.user.title') }}
+        DETALLE DE USUARIO
     </div>
 
     <div class="card-body">
@@ -25,14 +25,7 @@
                         {{ $user->email }}
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        {{ trans('global.user.fields.email_verified_at') }}
-                    </th>
-                    <td>
-                        {{ $user->email_verified_at }}
-                    </td>
-                </tr>
+               
                 <tr>
                     <th>
                         Roles

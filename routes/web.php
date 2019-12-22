@@ -21,12 +21,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('users', 'UsersController');
 
-
-    
 	Route::resource('marcas', 'CamionesMarcasController');
 
-	Route::resource('camiones', 'CamionesController');
+    Route::resource('camiones', 'CamionesController');
+    
+    Route::resource('tarifas', 'TarifasController');
 
+    Route::resource('empresas', 'EmpresasController');
+    Route::post('/boletas/completar', 'BoletasController@completar')->name('boletas.completar');
+    Route::get('/boletas/{id}/detalle', 'BoletasController@detalle');
 
+    Route::resource('boletas', 'BoletasController');
+
+    Route::resource('conductores', 'ConductorController');
     
 });

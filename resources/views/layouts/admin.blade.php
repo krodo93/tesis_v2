@@ -30,8 +30,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">
-            <span class="navbar-brand-full">Project</span>
-            <span class="navbar-brand-minimized">P</span>
+            <span class="navbar-brand-full">LA UNION</span>
+            <span class="navbar-brand-minimized">LU</span>
         </a>
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
             <span class="navbar-toggler-icon"></span>
@@ -93,15 +93,38 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function() {
-  let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
-  let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
-  let excelButtonTrans = '{{ trans('global.datatables.excel') }}'
-  let pdfButtonTrans = '{{ trans('global.datatables.pdf') }}'
-  let printButtonTrans = '{{ trans('global.datatables.print') }}'
-  let colvisButtonTrans = '{{ trans('global.datatables.colvis') }}'
+  let copyButtonTrans = 'COPIAR'
+  let csvButtonTrans = 'CSV'
+  let excelButtonTrans = 'EXCEL'
+  let pdfButtonTrans = 'PDF'
+  let printButtonTrans = 'IMPRIMIR'
+  let colvisButtonTrans = 'VISIBLES'
 
   let languages = {
-    'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json'
+    'en': {
+  "sProcessing": "Procesando...",
+  "sLengthMenu": "Mostrar _MENU_ registros",
+  "sZeroRecords": "No se encontraron resultados",
+  "sEmptyTable": "Ningún dato disponible en esta tabla",
+  "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+  "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+  "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+  "sInfoPostFix": "",
+  "sSearch": "Buscar:",
+  "sUrl": "",
+  "sInfoThousands": ",",
+  "sLoadingRecords": "Cargando...",
+  "oPaginate": {
+    "sFirst": "Primero",
+    "sLast": "Último",
+    "sNext": "Siguiente",
+    "sPrevious": "Anterior"
+  },
+  "oAria": {
+    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+  }
+}
   };
 
   $.extend(true, $.fn.dataTable.Buttons.defaults.dom.button, { className: 'btn' })
@@ -109,19 +132,7 @@
     language: {
       url: languages.{{ app()->getLocale() }}
     },
-    columnDefs: [{
-        orderable: false,
-        className: 'select-checkbox',
-        targets: 0
-    }, {
-        orderable: false,
-        searchable: false,
-        targets: -1
-    }],
-    select: {
-      style:    'multi+shift',
-      selector: 'td:first-child'
-    },
+  
     order: [],
     scrollX: true,
     pageLength: 100,

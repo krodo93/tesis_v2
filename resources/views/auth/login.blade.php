@@ -12,37 +12,31 @@
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-                        <h1>
-                            <div class="login-logo">
-                                <a href="#">
-                                    {{ trans('global.site_title') }}
-                                </a>
+                        <h2 class="text-center">
+                            ALCALDIA MUNICIPAL DE LA UNION
+                        </h2>
+                        <div class="login-logo text-center">
+                                <img src="/logo.png" class="img-responsive">
                             </div>
-                        </h1>
                         <p class="text-muted">{{ trans('global.login') }}</p>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input name="email" type="text" class="form-control" placeholder="{{ trans('global.login_email') }}">
+                            <input name="email" type="text" class="form-control" placeholder="Ingresa tu email">
                         </div>
                         <div class="input-group mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             </div>
-                            <input name="password" type="password" class="form-control" placeholder="{{ trans('global.login_password') }}">
+                            <input name="password" type="password" class="form-control" placeholder="Ingresa tu clave">
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <input type="submit" class="btn btn-primary px-4" value='{{ trans('global.login') }}'>
                                 <label class="ml-2">
-                                    <input name="remember" type="checkbox" /> {{ trans('global.remember_me') }}
+                                    <input name="remember" type="checkbox" /> RECORDARME
                                 </label>
-                            </div>
-                            <div class="col-6 text-right">
-                                <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                                    {{ trans('global.forgot_password') }}
-                                </a>
                             </div>
                         </div>
                     </form>

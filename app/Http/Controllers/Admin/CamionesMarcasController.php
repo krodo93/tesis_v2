@@ -31,8 +31,6 @@ class CamionesMarcasController extends Controller
 
 	public function edit(CamionesMarca $marca)
 	{
-
-
 		return view('admin.marcas.edit', compact('marca'));
 	}
 
@@ -59,4 +57,5 @@ class CamionesMarcasController extends Controller
 		$marca->delete();
 
 		return back();
-	}}
+	}
+}

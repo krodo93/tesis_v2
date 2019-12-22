@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Camiones;
-use App\Camionescamion;
+use App\CamionesMarca;
 class CamionesController extends Controller
 {
 	public function index(){
 
-		$camiones = Camiones::all();
+		$camiones = Camiones::join('camiones_marcas','camiones.marca_id','=','camiones_marcas.id')->select('camiones.*','camiones_marcas.nombre as marca')->get();
 
 		return view('admin.camiones.index', compact('camiones'));
 	}
 
 	public function create()
 	{
-
-		return view('admin.camiones.create');
+		$marcas = CamionesMarca::pluck('nombre','id');
+		return view('admin.camiones.create',compact('marcas'));
 	}
 
 	public function store(Request $request)
@@ -29,34 +29,34 @@ class CamionesController extends Controller
 		return redirect()->route('admin.camiones.index');
 	}
 
-	public function edit(Camiones $camion)
+	public function edit(Camiones $camione)
 	{
-
-
-		return view('admin.camiones.edit', compact('camion'));
+		$camion = $camione;
+		$marcas = CamionesMarca::pluck('nombre','id');
+		return view('admin.camiones.edit', compact('camion','marcas'));
 	}
 
-	public function update(Request $request, Camiones $camion)
+	public function update(Request $request, Camiones $camione)
 	{
 
 
-		$camion->update($request->all());
+		$camione->update($request->all());
 
 		return redirect()->route('admin.camiones.index');
 	}
 
-	public function show(Camiones $camion)
+	public function show(Camiones $camione)
 	{
 
 
-		return view('admin.camiones.show', compact('camion'));
+		return view('admin.camiones.show', compact('camione'));
 	}
 
-	public function destroy(Camiones $camion)
+	public function destroy(Camiones $camione)
 	{
 
 
-		$camion->delete();
+		$camione->delete();
 
 		return back();
 	}
