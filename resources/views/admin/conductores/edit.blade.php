@@ -34,3 +34,11 @@
 </div>
 
 @endsection
+@section('scripts')
+<script src="/input_mask/jquery.inputmask.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#telefono").inputmask("9999-9999");
+    $("#licencia").inputmask("9999-999999-999-9");});
+</script>
+@endsection

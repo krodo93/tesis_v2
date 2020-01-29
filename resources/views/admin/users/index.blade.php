@@ -28,7 +28,7 @@
                     </th>
                     
                     <th>
-                        {{ trans('global.user.fields.roles') }}
+                        ROL
                     </th>
                     <th>
                         ACCIONES

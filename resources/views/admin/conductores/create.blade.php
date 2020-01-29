@@ -5,9 +5,9 @@
     <div class="card-header">
         REGISTRAR NUEVO CONDUCTOR
     </div>
-
+    
     <div class="card-body">
-        <form action="{{ route("admin.conductores.store") }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route("admin.conductores.store") }}" method="POST" enctype="multipart/form-data" autocomplete="off">
             @csrf
             <div class="form-group {{ $errors->has('nombre') ? 'has-error' : '' }}">
                 <label for="nombre">NOMBRE COMPLETO</label>
@@ -32,4 +32,12 @@
     </div>
 </div>
 
+@endsection
+@section('scripts')
+<script src="/input_mask/jquery.inputmask.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#telefono").inputmask("9999-9999");
+    $("#licencia").inputmask("9999-999999-999-9");});
+</script>
 @endsection

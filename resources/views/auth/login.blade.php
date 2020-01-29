@@ -33,7 +33,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <input type="submit" class="btn btn-primary px-4" value='{{ trans('global.login') }}'>
+                                <input type="submit" class="btn btn-primary px-4" value='LOGIN'>
                                 <label class="ml-2">
                                     <input name="remember" type="checkbox" /> RECORDARME
                                 </label>

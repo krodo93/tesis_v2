@@ -7,6 +7,11 @@
     </div>
 
     <div class="card-body">
+        @if(session('tarifa'))
+            <div class="alert alert-danger" role="alert">
+              {{ session('tarifa') }}
+            </div>
+        @endif
         <form action="{{ route("admin.boletas.completar") }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$id}}">
@@ -55,21 +60,13 @@
                     <tr>
                         <td>#1</td>
                         <td>
-                            <input type="text" class="form-control" name="pesada_1_peso">
+                            <input type="number" class="form-control" name="pesada_1_peso">
                         </td>
                         <td>
-                            <input type="datetime-local" class="form-control" name="pesada_1_fecha_hora">
+                            
                         </td>
                     </tr>
-                    <tr>
-                        <td>#2</td>
-                        <td>
-                            <input type="text" class="form-control" name="pesada_2_peso">
-                        </td>
-                        <td>
-                            <input type="datetime-local" class="form-control" name="pesada_2_fecha_hora">
-                        </td>
-                    </tr>
+                    
                 </thead>
             </table>
             <div>

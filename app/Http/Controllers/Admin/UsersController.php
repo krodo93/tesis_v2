@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Role;
 use App\User;
 
+use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     public function index()
@@ -29,10 +30,13 @@ class UsersController extends Controller
         return view('admin.users.create', compact('roles'));
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
-        abort_unless(\Gate::allows('user_create'), 403);
-
+        $request->validate([
+            'name' => 'required|unique:users|max:255',
+            'email' => 'required|unique:users|max:255',
+            'password' => 'required'
+        ]);
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
 

@@ -74,8 +74,12 @@ class BoletasController extends Controller
     	$boleta->save();
 
     	//OBTENER TARIFA:
-
-    	$tarifa = Tarifa::where('inicio','<=', $fecha)->where('fin','>=',$fecha)->get()->first();
+        if(Tarifa::where('inicio','<=', $fecha)->where('fin','>=',$fecha)->exists()){
+            $tarifa = Tarifa::where('inicio','<=', $fecha)->where('fin','>=',$fecha)->get()->first();
+        }else{
+             return redirect()->back()->with('tarifa', 'NO HAY TARIFA REGISTRADA EN ESTE PERIODO DE FECHA');
+        }
+    	
 
     	// PRIMERA PESADA:
 
@@ -83,21 +87,12 @@ class BoletasController extends Controller
     	$primera_pesada->tarifa_id = $tarifa->id;
     	$primera_pesada->boletas_id = $boleta->id;
     	$primera_pesada->peso = $request->pesada_1_peso;
-    	$primera_pesada->pesada = Carbon::parse($request->pesada_1_fecha_hora);
+    	$primera_pesada->pesada = Carbon::now();
     	$primera_pesada->precio = $tarifa->precio;
     	$primera_pesada->total = $primera_pesada->peso * $primera_pesada->precio;
     	$primera_pesada->save();
 
-    	// SEGUNDA PESADA:
-
-    	$segunda_pesada = new BoletasDetalle();
-    	$segunda_pesada->tarifa_id = $tarifa->id;
-    	$segunda_pesada->boletas_id = $boleta->id;
-    	$segunda_pesada->peso = $request->pesada_2_peso;
-    	$segunda_pesada->pesada = Carbon::parse($request->pesada_2_fecha_hora);
-    	$segunda_pesada->precio = $tarifa->precio;
-    	$segunda_pesada->total = $segunda_pesada->peso * $segunda_pesada->precio;
-    	$segunda_pesada->save();
+    	
 
     	return redirect('admin/boletas/' . $boleta->id . '/detalle?completada=1');
 
